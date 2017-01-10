@@ -1,0 +1,30 @@
+plugins {
+    id "org.flywaydb.flyway" version "4.0.3"
+}
+
+group 'com.nexters.shootingstar'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+mainClassName = 'com.nexters.shootingstar.TodoApplication'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.0.5'
+    compile group: 'io.dropwizard', name: 'dropwizard-jdbi', version: '1.0.5'
+    compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
+}
+
+flyway {
+    driver = 'org.postgresql.Driver'
+    url = 'jdbc:postgresql://localhost:5432/todo?charSet=utf8'
+    user = 'clsan'
+    password = 'todo'
+}

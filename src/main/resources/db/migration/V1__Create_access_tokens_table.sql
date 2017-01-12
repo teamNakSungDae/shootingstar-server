@@ -1,0 +1,4 @@
+CREATE TABLE access_tokens (
+    email CHARACTER VARYING PRIMARY KEY,
+    token CHARACTER VARYING
+);

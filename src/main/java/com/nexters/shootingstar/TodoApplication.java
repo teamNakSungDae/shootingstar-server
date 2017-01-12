@@ -1,7 +1,9 @@
 package com.nexters.shootingstar;
 
-import com.nexters.shootingstar.dao.UserDao;
+import com.nexters.shootingstar.db.dao.AccessTokenDao;
+import com.nexters.shootingstar.db.dao.UserDao;
 import com.nexters.shootingstar.health.TemplateHealthCheck;
+import com.nexters.shootingstar.resources.AccessTokensResource;
 import com.nexters.shootingstar.resources.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
@@ -44,18 +46,17 @@ public class TodoApplication extends Application<TodoConfiguration> {
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
         final UserDao dao = jdbi.onDemand(UserDao.class);
+        final AccessTokenDao accessTokenDao = jdbi.onDemand(AccessTokenDao.class);
 
         // Resources
-        final HelloWorldResource resource = new HelloWorldResource(
-                configuration.getTemplate(),
-                configuration.getDefaultName(),
-                dao
-        );
+        final HelloWorldResource resource = new HelloWorldResource();
+        final AccessTokensResource accessTokensResource = new AccessTokensResource(accessTokenDao);
 
         // Health check
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
+        environment.jersey().register(accessTokensResource);
     }
 }

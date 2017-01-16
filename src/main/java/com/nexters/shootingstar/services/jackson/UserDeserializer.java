@@ -5,21 +5,20 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.nexters.shootingstar.models.AccessToken;
+import com.nexters.shootingstar.models.User;
 
 import java.io.IOException;
 
 /**
- * Created by yoon on 2017. 1. 12..
+ * Created by yoon on 2017. 1. 16..
  */
-public class AccessTokenDeserializer extends JsonDeserializer<AccessToken> {
+public class UserDeserializer extends JsonDeserializer<User> {
     @Override
-    public AccessToken deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public User deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         JsonNode node = p.getCodec().readTree(p);
 
         String email = node.get("email").asText();
-        String token = node.get("token").asText();
 
-        return new AccessToken(email, token);
+        return new User(email);
     }
 }

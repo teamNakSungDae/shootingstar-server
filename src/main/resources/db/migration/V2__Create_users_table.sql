@@ -1,0 +1,3 @@
+CREATE TABLE users (
+    email CHARACTER VARYING PRIMARY KEY
+);

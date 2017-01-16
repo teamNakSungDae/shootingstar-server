@@ -18,7 +18,7 @@ public class AccessTokenSerializer extends JsonSerializer<AccessToken> {
     {
         gen.writeStartObject();
         gen.writeStringField("email", accessToken.getEmail());
-        gen.writeStringField("accessToken", accessToken.getAccessToken());
+        gen.writeStringField("token", accessToken.getToken());
         gen.writeEndObject();
     }
 }

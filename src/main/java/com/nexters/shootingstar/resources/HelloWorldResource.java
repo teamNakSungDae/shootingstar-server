@@ -1,6 +1,8 @@
 package com.nexters.shootingstar.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.nexters.shootingstar.models.User;
+import io.dropwizard.auth.Auth;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
@@ -22,5 +24,12 @@ public class HelloWorldResource {
     @Timed
     public Response sayHello(@NonNull @QueryParam("name") String name) {
         return Response.ok("hello! " + name).build();
+    }
+
+    @GET
+    @Timed
+    @Path("/auth")
+    public Response sayHelloToAuth(@Auth User user) {
+        return Response.ok("hello! " + user).build();
     }
 }

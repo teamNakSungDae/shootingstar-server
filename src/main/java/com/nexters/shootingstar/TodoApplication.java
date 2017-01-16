@@ -1,11 +1,16 @@
 package com.nexters.shootingstar;
 
+import com.nexters.shootingstar.auth.ShootingStarOAuthAuthenticator;
+import com.nexters.shootingstar.auth.ShootingStarOAuthFilter;
+import com.nexters.shootingstar.auth.ShootingStarOAuthValueFactoryProvider;
 import com.nexters.shootingstar.db.dao.AccessTokenDao;
 import com.nexters.shootingstar.db.dao.UserDao;
 import com.nexters.shootingstar.health.TemplateHealthCheck;
+import com.nexters.shootingstar.models.User;
 import com.nexters.shootingstar.resources.AccessTokensResource;
 import com.nexters.shootingstar.resources.HelloWorldResource;
 import io.dropwizard.Application;
+import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.jdbi.DBIFactory;
@@ -15,6 +20,8 @@ import org.skife.jdbi.v2.DBI;
 
 import java.io.File;
 import java.net.URL;
+
+;
 
 /**
  * Created by yoon on 2017. 1. 4..
@@ -27,7 +34,7 @@ public class TodoApplication extends Application<TodoConfiguration> {
 
     @Override
     public String getName() {
-        return "hello-world";
+        return "todo-server";
     }
 
     @Override
@@ -45,8 +52,12 @@ public class TodoApplication extends Application<TodoConfiguration> {
         // DataBase
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
-        final UserDao dao = jdbi.onDemand(UserDao.class);
+        final UserDao userDao = jdbi.onDemand(UserDao.class);
         final AccessTokenDao accessTokenDao = jdbi.onDemand(AccessTokenDao.class);
+
+        // Auth
+        final ShootingStarOAuthAuthenticator authenticator = new ShootingStarOAuthAuthenticator(accessTokenDao);
+        final ShootingStarOAuthFilter authFilter = new ShootingStarOAuthFilter(authenticator);
 
         // Resources
         final HelloWorldResource resource = new HelloWorldResource();
@@ -58,5 +69,7 @@ public class TodoApplication extends Application<TodoConfiguration> {
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
         environment.jersey().register(accessTokensResource);
+        environment.jersey().register(new AuthDynamicFeature(authFilter));
+        environment.jersey().register(new ShootingStarOAuthValueFactoryProvider.Binder<>(User.class));
     }
 }

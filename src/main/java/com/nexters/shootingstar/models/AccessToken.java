@@ -21,5 +21,5 @@ public class AccessToken {
 
     @NonNull
     @JsonProperty
-    private String accessToken;
+    private String token;
 }

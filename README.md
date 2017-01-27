@@ -8,3 +8,9 @@ $ brew install postgresql
 $ brew install gradle
 ```
 - If already installed, brew upgrade [postgresql | gradle]
+
+## Execution sequence
+```
+$ brew services start postgresql
+$ createuser *
+$ createdb *

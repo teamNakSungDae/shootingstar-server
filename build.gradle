@@ -17,10 +17,14 @@ repositories {
 }
 
 dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'org.assertj:assertj-core:3.6.2'
+
     compile group: 'io.dropwizard', name: 'dropwizard-auth', version: '1.0.5'
     compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.0.5'
     compile group: 'io.dropwizard', name: 'dropwizard-jdbi', version: '1.0.5'
     compile group: 'io.dropwizard', name: 'dropwizard-hibernate', version: '1.0.5'
+    compile 'org.apache.httpcomponents:httpclient:4.5.3'
     // compile group: 'com.google.inject.extensions', name: 'guice-persist', version: '4.0'
     compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
     compile 'org.projectlombok:lombok:1.16.10'

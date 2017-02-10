@@ -7,6 +7,7 @@ import com.nexters.shootingstar.services.jackson.AccessTokenDeserializer;
 import com.nexters.shootingstar.services.jackson.AccessTokenSerializer;
 import lombok.Data;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Created by yoon on 2017. 1. 12..
@@ -14,6 +15,7 @@ import lombok.NonNull;
 @Data
 @JsonSerialize(using = AccessTokenSerializer.class)
 @JsonDeserialize(using = AccessTokenDeserializer.class)
+@RequiredArgsConstructor
 public class AccessToken {
     @NonNull
     @JsonProperty

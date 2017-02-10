@@ -5,7 +5,9 @@ import com.nexters.shootingstar.models.User;
 import io.dropwizard.auth.Auth;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -22,7 +24,7 @@ import javax.ws.rs.core.Response;
 public class HelloWorldResource {
     @GET
     @Timed
-    public Response sayHello(@NonNull @QueryParam("name") String name) {
+    public Response sayHello(@NotBlank @QueryParam("name") String name) {
         return Response.ok("hello! " + name).build();
     }
 

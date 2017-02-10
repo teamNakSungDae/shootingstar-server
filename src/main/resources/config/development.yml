@@ -1,5 +1,5 @@
 database:
   driverClass: org.postgresql.Driver
-  user: giho
+  user: shooting-star
   password: todo
   url: jdbc:postgresql://localhost:5432/todo?charSet=utf8

@@ -40,6 +40,5 @@ public class HelloWorldResourceTest extends ResourceTest {
 
     @Test
     public void testSayHelloWithNullName() throws IOException {
-
     }
 }

@@ -28,8 +28,7 @@ import java.net.URL;
  */
 public class TodoApplication extends Application<TodoConfiguration> {
     public static void main(final String[] args) throws Exception {
-        URL url = TodoApplication.class.getClassLoader().getResource("config/development.yml");
-        new TodoApplication().run("server", new File(url.toURI()).getAbsolutePath());
+        new TodoApplication().run("server", new File("src/main/resources/config/development.yml").getAbsolutePath());
     }
 
     @Override

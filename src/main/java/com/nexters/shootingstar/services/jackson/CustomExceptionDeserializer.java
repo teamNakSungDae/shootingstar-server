@@ -18,12 +18,13 @@ import java.util.*;
 public class CustomExceptionDeserializer extends JsonDeserializer<CustomException> {
     @Override
     public CustomException deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        JsonNode node = p.getCodec().readTree(p);
-
         List<ExceptionDescription> exceptionDescriptionList = new ArrayList<ExceptionDescription>();
 
+        JsonNode node = p.getCodec().readTree(p);
         String type = node.get("type").asText();
         int status = node.get("status").asInt();
+
+
         List<JsonNode> lists = node.findValues("errors");
 
         for(JsonNode jd : lists.get(0))

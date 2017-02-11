@@ -29,6 +29,10 @@ public class CustomExceptionTest {
 
     List<ExceptionDescription> lists;
     CustomException customException;
+
+    /**
+     * initialize data
+     */
     @Before
     public void init(){
         lists = new ArrayList<ExceptionDescription>();
@@ -47,15 +51,28 @@ public class CustomExceptionTest {
 
         customException.setErrors(lists);
     }
+
+    /**
+     * interface method test.
+     */
     @Test
     public void getClassMethodTest() {
         assertThat( this.getClass().getSimpleName()).isEqualTo("CustomExceptionTest");
     }
 
+    /**
+     * serialize by CustomException.
+     * @throws Exception The writeValueAsString method of ObjectMapper throws JsonProcessingException .
+     */
     @Test
     public void customExceptionSerializerTest() throws Exception{
         System.out.println(new ObjectMapper().writeValueAsString(customException));
     }
+
+    /**
+     * deserialize by CustomException.
+     * @throws Exception The writeValueAsString method of ObjectMapper throws JsonProcessingException .
+     */
     @Test
     public void customExceptionDeserializerTest() throws Exception {
         String json = new ObjectMapper().writeValueAsString(customException);

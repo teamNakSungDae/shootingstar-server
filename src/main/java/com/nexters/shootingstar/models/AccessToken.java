@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @JsonSerialize(using = AccessTokenSerializer.class)
 @JsonDeserialize(using = AccessTokenDeserializer.class)
 @RequiredArgsConstructor
-public class AccessToken {
+public class AccessToken implements Entity{
     @NonNull
     @JsonProperty
     private String email;

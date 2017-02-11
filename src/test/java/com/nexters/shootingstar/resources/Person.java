@@ -1,28 +1,20 @@
 package com.nexters.shootingstar.resources;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.internal.NotNull;
-import com.sun.tracing.dtrace.ArgsAttributes;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import javax.annotation.sql.DataSourceDefinitions;
+import lombok.*;
 
 /**
  * Created by kwongiho on 2017. 2. 11..
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@RequiredArgsConstructor
 public class Person {
-    @NotNull
+    @NonNull
     @JsonProperty
     private String email;
 
-    @NotNull
+    @NonNull
     @JsonProperty
     private String name;
 

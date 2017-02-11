@@ -4,13 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.nexters.shootingstar.models.Entity;
 import com.nexters.shootingstar.services.jackson.CustomExceptionSerializer;
-import com.sun.istack.internal.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -22,13 +17,13 @@ import java.util.List;
 @NoArgsConstructor
 @JsonSerialize(using = CustomExceptionSerializer.class)
 public class CustomException implements Entity{
-    @NotNull
+    @NonNull
     @JsonProperty
     private String type;
-    @NotNull
+    @NonNull
     @JsonProperty
     private int status;
-    @NotNull
+    @NonNull
     @JsonProperty
     private List<ExceptionDescription> errors;
 

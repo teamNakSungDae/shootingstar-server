@@ -2,11 +2,7 @@ package com.nexters.shootingstar.exception;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nexters.shootingstar.models.Entity;
-import com.sun.istack.internal.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -19,12 +15,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ExceptionDescription implements Serializable {
     @JsonProperty
-    @NotNull
+    @NonNull
     private String message;
+
     @JsonProperty
-    @NotNull
+    @NonNull
     private String field;
+
     @JsonProperty
-    @NotNull
+    @NonNull
     private Entity entity;
 }

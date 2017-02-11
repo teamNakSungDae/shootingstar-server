@@ -4,10 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import com.nexters.shootingstar.models.User;
 import io.dropwizard.auth.Auth;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.validation.constraints.NotNull;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

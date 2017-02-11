@@ -19,7 +19,6 @@ import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 
 import java.io.File;
-import java.net.URL;
 
 ;
 
@@ -28,7 +27,8 @@ import java.net.URL;
  */
 public class TodoApplication extends Application<TodoConfiguration> {
     public static void main(final String[] args) throws Exception {
-        new TodoApplication().run("server", new File("src/main/resources/config/development.yml").getAbsolutePath());
+        new TodoApplication().run("server",
+                new File("src/main/resources/config/"+args[0]+".yml").getAbsolutePath());
     }
 
     @Override

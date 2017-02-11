@@ -3,17 +3,17 @@ package com.nexters.shootingstar;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
+import lombok.NonNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 /**
  * Created by yoon on 2017. 1. 4..
  */
 public class TodoConfiguration extends Configuration {
     @Valid
-    @NotNull
+    @NonNull
     private DataSourceFactory database = new DataSourceFactory();
 
     @JsonProperty("database")

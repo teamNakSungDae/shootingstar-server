@@ -6,11 +6,8 @@ buildscript {
     }
     dependencies {
         classpath 'org.yaml:snakeyaml:1.17'
+        classpath 'org.flywaydb:flyway-gradle-plugin:4.0.3'
     }
-}
-
-plugins {
-    id "org.flywaydb.flyway" version "4.0.3"
 }
 
 group 'com.nexters.shootingstar'
@@ -18,6 +15,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'org.flywaydb.flyway'
 
 sourceCompatibility = 1.8
 
@@ -43,11 +41,30 @@ dependencies {
     compile 'org.projectlombok:lombok:1.16.10'
 }
 
-def yaml = new Yaml().load(project.file("src/main/resources/config/${System.getenv()}.yml").newReader())
+def yaml = new Yaml().load(project.file("src/main/resources/config/production.yml").newReader())
 
 flyway {
     driver = yaml.database.driver
     url = yaml.database.url
     user = yaml.database.user
     password = yaml.database.password
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+}
+
+task fatJar(type: Jar) {
+    manifest.from jar.manifest
+    classifier = 'all'
+    from {
+        configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    with jar
 }

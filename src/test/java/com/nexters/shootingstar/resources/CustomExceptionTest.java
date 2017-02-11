@@ -1,25 +1,18 @@
 package com.nexters.shootingstar.resources;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.nexters.shootingstar.exception.CustomException;
 import com.nexters.shootingstar.exception.ExceptionDescription;
 import com.nexters.shootingstar.models.AccessToken;
-import com.nexters.shootingstar.models.Entity;
 import com.nexters.shootingstar.services.jackson.CustomExceptionDeserializer;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

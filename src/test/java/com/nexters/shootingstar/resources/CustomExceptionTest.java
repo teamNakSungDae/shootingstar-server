@@ -50,7 +50,9 @@ public class CustomExceptionTest {
      */
     @Test
     public void getClassMethodTest() {
+
         assertThat( this.getClass().getSimpleName()).isEqualTo("CustomExceptionTest");
+
     }
 
     /**
@@ -74,4 +76,9 @@ public class CustomExceptionTest {
         module.addDeserializer(CustomException.class , new CustomExceptionDeserializer());
         System.out.println(new ObjectMapper().registerModule(module).readValue(json,CustomException.class));
     }
+    @Test(expected = Exception.class)
+    public void wontException()throws Exception {
+        
+    }
+
 }

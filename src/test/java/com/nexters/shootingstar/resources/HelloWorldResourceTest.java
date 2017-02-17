@@ -1,25 +1,16 @@
 package com.nexters.shootingstar.resources;
 
 import com.nexters.shootingstar.ResourceTest;
-import com.nexters.shootingstar.models.Hello;
 import com.sun.org.apache.xml.internal.utils.URI;
-import io.dropwizard.testing.junit.ResourceTestRule;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.glassfish.jersey.client.JerseyClientBuilder;
-import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.Before;
-import org.junit.ClassRule;
 import org.junit.Test;
 
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;

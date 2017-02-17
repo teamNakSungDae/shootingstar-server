@@ -1,12 +1,5 @@
 package com.nexters.shootingstar.resources;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.dropwizard.jackson.Jackson;
-import org.junit.Test;
-
-import static io.dropwizard.testing.FixtureHelpers.fixture;
-import static org.assertj.core.api.Assertions.assertThat;
-
 /**
  * Created by kwongiho on 2017. 2. 11..
  */

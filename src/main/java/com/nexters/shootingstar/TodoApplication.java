@@ -19,7 +19,6 @@ import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 
 import java.io.File;
-import java.net.URL;
 
 ;
 

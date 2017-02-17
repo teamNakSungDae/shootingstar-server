@@ -10,7 +10,8 @@ import com.nexters.shootingstar.exception.ExceptionDescription;
 import com.nexters.shootingstar.models.AccessToken;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kwongiho on 2017. 2. 11..
